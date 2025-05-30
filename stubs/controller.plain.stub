@@ -1,0 +1,12 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DummyFullModelClass;
+
+class DummyClass extends Controller
+{
+    //
+}
