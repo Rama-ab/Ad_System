@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Services\AdService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Ad\StoreAdRequest;
+use App\Http\Requests\Ad\UpdateAdRequest;
 
 class AdController extends Controller
 {
@@ -12,12 +14,11 @@ class AdController extends Controller
     public function __construct(AdService $adService)
     {
         $this->adService = $adService;
-        $this->authorizeResource(Ad::class, 'ad');
     }
     /**
      * Display a listing of the resource.
      */
-    public function index(): JsonResponse{
+    public function index(){
 
     $ads = $this->adService->getAllActiveAds();
     return response()->json([
@@ -62,7 +63,7 @@ class AdController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(int $adId, Request $request): JsonResponse
+    public function destroy(int $adId, Request $request)
 {
         $this->adService->deleteAd($adId, $request->user());
         return response()->json([

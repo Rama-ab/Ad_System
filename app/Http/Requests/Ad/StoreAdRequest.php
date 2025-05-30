@@ -26,7 +26,7 @@ class StoreAdRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
+            'price' => 'required|min:0',
             'category_id' => 'required|exists:categories,id',
 
             'images' => ['nullable', 'array'],

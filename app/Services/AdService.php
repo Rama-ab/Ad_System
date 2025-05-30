@@ -5,7 +5,10 @@ namespace App\Services;
 use App\Models\Ad;
 use App\Services\AdService;
 use App\Jobs\ProcessAdImages;
+use Illuminate\Support\Facades\DB;
 use App\Jobs\SendAdConfirmationEmail;
+use Illuminate\Support\Facades\Cache;
+
 
 class AdService
 {
@@ -29,7 +32,7 @@ class AdService
             $ad = Ad::create([
                 'title' => $data['title'],
                 'description' => $data['description'],
-                'price' => $data['price'],
+                'description' => $data['price'],
                 'category_id' => $data['category_id'],
                 'user_id' => $user->id,
                 'status' => 'pending',

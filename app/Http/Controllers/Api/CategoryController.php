@@ -55,6 +55,8 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateCategoryRequest $request, Category $category){
+
+        $this->authorize('update', $category);
         $category = $this->categoryService->update($category, $request->validated());
 
         return response()->json([
@@ -68,6 +70,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $this->authorize('delete', $category);
         $this->categoryService->delete($category);
         return response()->json(['message' => 'Category deleted successfully.']);
     }
